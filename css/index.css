@@ -42,12 +42,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/* End of CSS Reset */
+
 *{
     box-sizing:border-box; /*respect the width I've given you, if I add padding or border apply it within the width no in addition to it*/
     padding:0;
     margin:0;
     max-width:100%;/*You can NEVER be bigger than your parent - this stops the horizontal scroll*/
-    border:1px solid grey;
 }
 /*General Styles*/
 html{
@@ -82,7 +83,46 @@ a{
 section{
     padding:4% 0;
 }
+
+/*Styling for Buttons*/
+
+button {
+    background-color: #266035;
+    height: 5rem;
+    width: 20rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    color: #f4f4f4;
+}
+
+/* Special Styles for topButton | Note: did not need to use JS to make the entire button clickable; just had to fix a couple of Flexbox bugs. */
+
+#topButton {
+    display: flex;
+    background-color: #f4f4f4;
+    height: 5rem;
+    width: 30rem;
+    margin: 0;
+    font-size: 2rem;
+    color: #266035;
+}
+#topButton a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+#topButton:hover {
+    background-color: #266035;
+    color: #f4f4f4;
+    border: 2.5px solid #f4f4f4;
+}
+
 /*Header Section Styles*/
+
 nav{
     display:flex;
     justify-content: space-between;
@@ -105,18 +145,25 @@ nav{
     display:flex;
     justify-content: space-evenly;
 }
+
 /*Home Section Styles*/
 #home{
-    height:90vh;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    height:90vh;
     background-image: url('../images/header.jpg');
     background-repeat:no-repeat;
     background-size:cover;
     background-position: bottom;
 }
+.titles{ /*Added to center on background image after making entire button clickable*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 /*About Section Styles*/
 #about{
     background-image: url('../images/about-img.jpg');
@@ -136,6 +183,7 @@ nav{
 .container{
     display:flex;
     flex-wrap:wrap;
+    margin-top: 5rem;
 }
 .bgimg, .shopTxt{
     width:50%;
@@ -167,19 +215,38 @@ nav{
 
 /* Footer Styles */
 footer {
-    background-color: #266035;
+    background-color:#266035;
+    color:#fff;
+    display:flex;
+    flex-wrap:wrap;
+}
+footer h2 {
+    width:100%;
+}
+footer h2, footer h3 {
     color: #fff;
-    display: flex;
-    flex-wrap: wrap;
+}
+footer a {
+    color:#fff;
+}
+.left, .right {
+    width:50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 .copyright {
+    width:100%;
+    text-align:right;
+}
+.copyright p {
     margin-right: 2%;
 }
-.right img{
-    width: 50%;
+.right img {
+    width:50%;
 }
 .left div {
-    width: 50%;
+    width:50%;
 }
 
 /*
@@ -188,11 +255,87 @@ Media Queries
 mobile first - scaling up = min-width
 desktop first - scaling down = max-width
 */
-
-@media(max-width: 800px) { /* apply these styles to any screen 800px or smaller */
-
+/*Tablets*/
+@media(max-width: 800px){ /*apply these styles to anything that is 800px or smaller*/
+    /*all of the styles for 800px go here*/
+    #about{
+        background-position: left center;
+    }
+    #about div{
+        width:50%;
+        margin-right:3%;
+        margin-top:5%;
+    }
 }
 
-@media(max-width: 500px) { /* Mid-size Phone *\
+/*phones*/
+@media(max-width:500px){
+   nav{
+       flex-wrap:wrap;
+       justify-content: center;
+   }
+   .links{
+       width:100%;
+   }
+   .logo{
+       width:30%;
+   }
+   /*about section styles*/
+   #about{
+       background-image:none;
+       background-color:#dddee0;
+       justify-content: center;
+       height:auto;
+   }
+   #about div{
+       margin:0;
+       width:90%;
+   }
+   .container{
+       justify-content: center;
+   }
+   .bgimg, .shopTxt{
+       width:90%;
+   }
+   .bgimg{
+       height:50vh;
+   }
+   .one{
+       order:1;
+   }
+   .two{
+       order:2;
+   }
+   .three{
+       order:3;
+   }
+   .four{
+       order:4;
+   }
+   .five{
+       order:5;
+   }
+   .six{
+       order:6;
+   }
+   .left, .right{
+       width:100%;
+   }
+   footer h2{
+       order: 1;
+   }
+   .left{
+       order: 3;
+   }
+   .right{
+       order:2;
+   }
+   .copyright{
+       order:4;
+       text-align:center;
+   }
+   .copyright p{
+       margin:0;
+   }
 
 }
